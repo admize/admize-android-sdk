@@ -43,10 +43,10 @@
 
 	```clojure
  	dependencies {
-	implementation 'com.google.android.gms:play-services-ads-identifier:17.0.0'
-	implementation 'com.google.android.gms:play-services-appset:16.0.0'
-    implementation 'io.admize.sdk:admize-sdk:1.0.0'
-    }
+		implementation 'com.google.android.gms:play-services-ads-identifier:17.0.0'
+		implementation 'com.google.android.gms:play-services-appset:16.0.0'
+		implementation 'io.admize.sdk:admize-sdk:1.0.0'
+	}
 	```
 
 
@@ -56,8 +56,8 @@
 #### 필수 퍼미션 추가
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-<uses-permission android:name="com.google.android.gms.permission.AD_ID"/>
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+<uses-permission android:name="com.google.android.gms.permission.AD_ID" />
 ```
 
 #### 네트워크 보안 설정 (targetSdkVersion 28 이상)
@@ -111,8 +111,8 @@ proguard-rules.pro ::
 -keep class io.admize.sdk.android.ads.AdmizeLog$LogLevel{*;}
 
 -keepclasseswithmembers class io.admize.sdk.android.ads.AdmizeAds {
-  public static *** initialize(***);
-  public static *** initialize(***, ***);
+    public static *** initialize(***);
+    public static *** initialize(***, ***);
 }
 
 -keepclasseswithmembers class io.admize.sdk.android.ads.AdmizeAdView {
@@ -203,11 +203,11 @@ gradle.properties ::
         AdmizeAdRequest admizeAdRequest =
                 new AdmizeAdRequest.Builder()
                         .admizeAdType(ADMIZE_AD_TYPE.BANNER)
-						.mediaUid("abc")
+                        .mediaUid("abc")
                         .publisherUid("def")
                         .placementUid("1")
                         .admizeMultiBidsList(admizeAdSizeList)
-						.coppaEnabled(true) // 아동 대상 서비스 취급용 광고 콘텐츠 설정. true이면 아동대상으로만 설정, false이면 미설정. 기본값은 true.
+                        .coppaEnabled(true) // 아동 대상 서비스 취급용 광고 콘텐츠 설정. true이면 아동대상으로만 설정, false이면 미설정. 기본값은 true.
                         .build();
 						
         // 4. AdmizeAdRequest를 이용, AdmizeAdView 생성.
@@ -216,8 +216,7 @@ gradle.properties ::
 
         RelativeLayout rootView = (RelativeLayout) findViewById(R.id.root_view);
         // 예시 : 화면 하단에 배너 부착
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
         rootView.addView(admizeAdView, params);
 		
@@ -231,22 +230,22 @@ gradle.properties ::
  
             @Override
             public void onAdFailedToLoad(int statusCode, String message) {
-				AdmizeLog.d("onAdFailedToLoad() with statusCode: " + statusCode + ", message: "+ message);
+                 AdmizeLog.d("onAdFailedToLoad() with statusCode: " + statusCode + ", message: "+ message);
             }
  
             @Override
             public void onAdOpened() {
-				AdmizeLog.d("onAdOpened()");
+                 AdmizeLog.d("onAdOpened()");
             }
  
             @Override
             public void onAdClicked() {
-				AdmizeLog.d("onAdClicked()");
+                 AdmizeLog.d("onAdClicked()");
             }
  
             @Override
             public void onAdClosed() {
-				AdmizeLog.d("onAdClosed()");
+                 AdmizeLog.d("onAdClosed()");
             }
         });
  
@@ -372,15 +371,13 @@ Lifecycle에 따라 pause/resume/destroy API를 호출하지 않을 경우, 광�
 ##### COPPA에 따라 콘텐츠를 아동 대상으로 지정하려면 'coppaEnabled(true)' 로 호출 한다.
 
 ```java
-AdmizeAdRequest admizeAdRequest =
-		new AdmizeAdRequest.Builder()
+AdmizeAdRequest admizeAdRequest = new AdmizeAdRequest.Builder()
 				.coppaEnabled(true)
 				.build();
 ```
 ##### COPPA에 따라 콘텐츠를 아동 대상으로 지정하지 않으려면 'coppaEnabled(false)' 로 호출 한다.
 ```java
-AdmizeAdRequest admizeAdRequest =
-		new AdmizeAdRequest.Builder()
+AdmizeAdRequest admizeAdRequest = new AdmizeAdRequest.Builder()
 				.coppaEnabled(false)
 				.build();
 ```
