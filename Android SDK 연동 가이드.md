@@ -93,7 +93,7 @@
 ```xml
 <meta-data
 	android:name="io.admize.sdk.android.ads.MEDIA_UID"
-	android:value="1012483" />
+	android:value="abc" />
 ```
 
 
@@ -105,14 +105,16 @@ proguard-rules.pro ::
 -keep interface io.admize.sdk.android.cores.http.admize.response.** {*;}
 -keep class io.admize.sdk.android.cores.http.admize.request.** {*;}
 -keep interface io.admize.sdk.android.cores.http.admize.request.** {*;}
- 
+
 -keep class io.admize.sdk.android.ads.ADMIZE_AD_SIZE {*;}
 -keep class io.admize.sdk.android.ads.ADMIZE_AD_TYPE {*;}
+-keep class io.admize.sdk.android.ads.AdmizeLog$LogLevel{*;}
+
 -keepclasseswithmembers class io.admize.sdk.android.ads.AdmizeAds {
   public static *** initialize(***);
   public static *** initialize(***, ***);
 }
- 
+
 -keepclasseswithmembers class io.admize.sdk.android.ads.AdmizeAdView {
     public <init>(...);
     public *** loadAd(***);
@@ -120,7 +122,19 @@ proguard-rules.pro ::
     public *** setAdmizeAdListener(***);
     public *** clearView();
 }
- 
+
+-keepclasseswithmembers class io.admize.sdk.android.ads.AdmizeLog {
+    public static *** setLogLevel(***);
+    public static *** getLogLevel();
+    public static *** d(***);
+    public static *** i(***);
+    public static *** w(***);
+    public static *** e(java.lang.String);
+    public static *** e(java.lang.Exception);
+    public static *** e(java.lang.String, java.lang.Exception);
+    public static *** e(java.lang.String, java.lang.Throwable);
+}
+
 -keepclasseswithmembers class io.admize.sdk.android.ads.AdmizeAdRequest$Builder {
     public <init>(...);
     public *** admizeAdType(***);
@@ -128,13 +142,18 @@ proguard-rules.pro ::
     public *** placementUid(***);
     public *** mediaUid(***);
     public *** admizeMultiBidsList(***);
-    public *** endpoint(***);
-    public *** configServer(***);
-    public *** setJsonRawString(***);
     public *** setTest(***);
+    public *** coppaEnabled(***);
     public *** build();
 }
- 
+
+-keepclasseswithmembers class io.admize.sdk.android.ads.AdmizeInterstitialAd {
+    public static *** loadAd(***, ***, ***);
+    public *** show(***);
+    public *** setAdmizeInterstitialAdListener(***);
+}
+
+-keep interface io.admize.sdk.android.ads.AdmizeInterstitialAdListener {*;}
 -keep interface io.admize.sdk.android.ads.AdmizeAdListener {*;}
 -keep interface io.admize.sdk.android.ads.init.AdmizeOnInitializationCompleteListener {*;}
 ```
@@ -267,7 +286,7 @@ gradle.properties ::
         ads:admizeAdType="BANNER"
         ads:bannerSize="BANNER320x50"
         ads:placementUid="1"
-        ads:publisherUid="7c1a5597-de17-45f2-abde-83699817be54"
+        ads:publisherUid="def"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
@@ -316,7 +335,7 @@ setTest()|테스트 모드를 지원합니다. 옵션값이며 true일 경우 �
         AdmizeAdRequest admizeAdRequest =
                 new AdmizeAdRequest.Builder()
                         .admizeAdType(ADMIZE_AD_TYPE.INTERSTITIAL)
-                        .publisherUid("7c1a5597-de17-45f2-abde-83699817be54")
+                        .publisherUid("def")
                         .placementUid("1")
                         .admizeMultiBidsList(admizeAdSizeList)
                         .build();
