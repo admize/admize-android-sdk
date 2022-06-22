@@ -1,4 +1,4 @@
-[Admize Android SDK](https://github.com/cauly/Android-SDK/blob/master/Android%20SDK%20%EC%97%B0%EB%8F%99%20%EA%B0%80%EC%9D%B4%EB%93%9C.md)
+[Admize Android SDK](https://github.com/admize/admize-sdk-android/blob/main/README.md)
 ====
 - 최신 버전의 Admize SDK 사용을 권장합니다. 
 - 최신 버전의 Android Studio 사용을 권장합니다. Eclipse에 대한 기술 지원은 하지 않습니다.
@@ -7,7 +7,7 @@
 
 Android SDK 연동
 ----
-SDK 연동 방법은 [Android SDK 연동 가이드](https://github.com/cauly/Android-SDK/blob/master/Android%20SDK%20%EC%97%B0%EB%8F%99%20%EA%B0%80%EC%9D%B4%EB%93%9C.md) 에서 확인하실 수 있습니다.
+SDK 연동 방법은 [Android SDK 연동 가이드](https://github.com/admize/admize-sdk-android/blob/main/Android%20SDK%20%EC%97%B0%EB%8F%99%20%EA%B0%80%EC%9D%B4%EB%93%9C.md) 에서 확인하실 수 있습니다.
 
 Release Note
 ----
@@ -26,11 +26,6 @@ Release Note
    - 3.5.21 이상 버전으로 업데이트를 해주셔야 안드로이드 12 환경에서 정상적인 광고ID 수집이 가능하며,
    - Google 광고ID 가 없는 경우에는 [App set ID](https://developer.android.com/training/articles/app-set-id) 값을 수집하여 분석 및 Fraud 방어를 문제 없이 수행 할 수 있도록 지원합니다.
    - 퍼미션 추가와 함께, Admize 안드로이드 SDK 또한 최신 버전으로 업데이트가 필요합니다.
-   - 로컬 저장소에 [Admize SDK 를 수동으로 Import 하여 사용하시는 경우](https://github.com/cauly/Android-SDK/tree/master/CaulyLib) App set ID 수집을 위해 gradle 파일에 아래 Dependency 를 추가 해야 합니다.
-     ```
-     implementation 'com.google.android.gms:play-services-ads-identifier:17.0.0'
-     implementation 'com.google.android.gms:play-services-appset:16.0.0'
-     ```
 3. 개인정보 처리방침 (Pivacy Policy) 업데이트 
    - 3rd Party SDK 가 수집하는 항목에서 디바이스 레벨의 App set ID 항목이 추가 되었습니다. 귀사 서비스의 개인정보 처리방침에 추가가 필요한 경우 업데이트를 부탁 드립니다.
 
