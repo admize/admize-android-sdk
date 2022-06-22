@@ -171,7 +171,7 @@ gradle.properties ::
 
 광고를 삽입하고 싶은 layout에 광고를 소스를 삽입(두 가지 방식 제공 : XML 방식, JAVA 방식)
 
-#### `JAVA 방식` base [자세한 내용은 ‘CaulyExample’ 참조]
+#### `JAVA 방식` base [자세한 내용은 ‘AdmizeSample’ 참조]
 ``` java
    private AdmizeAdView admizeAdView;
 
@@ -250,7 +250,7 @@ gradle.properties ::
             }
         });
  
-        // 3. AdView 로드
+        // 6. AdView 로드
         admizeAdView.loadAd(this);
     }
  
@@ -315,7 +315,7 @@ setTest()|테스트 모드를 지원합니다. 옵션값이며 true일 경우 �
 #### 전면광고 fullScreen Type
 
 ```java
-    private InterstitialAd mInterstitialAd;
+    private AdmizeInterstitialAd mAdmizeInterstitialAd;
  
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -338,14 +338,14 @@ setTest()|테스트 모드를 지원합니다. 옵션값이며 true일 경우 �
                         .placementUid("1")
                         .build();
  
-        // 4. InterstitalAd 로드 및 결과 통지 받을 리스너(InterstitialAdListener) 등록
-        InterstitialAd.loadAd(this, admizeAdRequest, new InterstitialAdListener(){
+        // 3. AdmizeInterstitalAd 로드 및 결과 통지 받을 리스너(AdmizeInterstitialAdListener) 등록
+        AdmizeInterstitialAd.loadAd(this, admizeAdRequest, new AdmizeInterstitialAdListener(){
             @Override
-            public void onAdLoaded(@NonNull InterstitialAd interstitialAd, String message) {
-                mInterstitialAd = interstitialAd;
+            public void onAdLoaded(@NonNull AdmizeInterstitialAd admizeInterstitialAd, String message) {
+                mAdmizeInterstitialAd = admizeInterstitialAd;
                 Toast.makeText(getApplicationContext(), getClass().getSimpleName() + ".onAdLoaded()", Toast.LENGTH_LONG).show();
-                if(mInterstitialAd != null){
-                    mInterstitialAd.show(SampleClientActivity.this);
+                if(mAdmizeInterstitialAd != null){
+                    mAdmizeInterstitialAd.show(SampleClientActivity.this);
                 }
             }
  
