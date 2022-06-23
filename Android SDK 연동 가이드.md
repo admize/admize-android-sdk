@@ -195,19 +195,20 @@ gradle.properties ::
         // 2. Bid size(SingleBid 또는 MultiBids)
         List<ADMIZE_AD_SIZE> admizeAdSizeList = new ArrayList<>();
         admizeAdSizeList.add(ADMIZE_AD_SIZE.SMALL_BANNER); // 320x50
-		//admizeAdSizeList.add(ADMIZE_AD_SIZE.MEDIUM_RECTANGLE_BANNER); // 320x100
-		//admizeAdSizeList.add(ADMIZE_AD_SIZE.LARGE_BANNER); // 300x250
+	//admizeAdSizeList.add(ADMIZE_AD_SIZE.MEDIUM_RECTANGLE_BANNER); // 320x100
+	//admizeAdSizeList.add(ADMIZE_AD_SIZE.LARGE_BANNER); // 300x250
 
          
         // 3. AdmizeAdRequest 생성
         AdmizeAdRequest admizeAdRequest =
                 new AdmizeAdRequest.Builder()
                         .admizeAdType(ADMIZE_AD_TYPE.BANNER)
-			.mediaUid("abc")
-                        .publisherUid("def")
-                        .placementUid("1")
+		        .mediaUid("4e67c0824b9039a2b6047d8a5d60cb1c8470f4a5")
+		        .publisherUid("666fe91f-4a46-4f9a-95b4-a8255603da69")
+		        .placementUid("1e0a5c9c14b38280c6a53d27b3ada5303c793853")
                         .admizeMultiBidsList(admizeAdSizeList)
 			.coppaEnabled(true) // 아동 대상 서비스 취급용 광고 콘텐츠 설정. true이면 아동대상으로만 설정, false이면 미설정. 기본값은 true.
+			.setTest(true)
                         .build();
 						
         // 4. AdmizeAdRequest를 이용, AdmizeAdView 생성.
@@ -288,8 +289,8 @@ gradle.properties ::
         ads:textColor="@color/black"
         ads:admizeAdType="BANNER"
         ads:bannerSize="BANNER320x50"
-        ads:placementUid="1"
-        ads:publisherUid="def"
+        ads:placementUid="1e0a5c9c14b38280c6a53d27b3ada5303c793853"
+        ads:publisherUid="666fe91f-4a46-4f9a-95b4-a8255603da69"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
@@ -338,8 +339,10 @@ setTest()|테스트 모드를 지원합니다. 옵션값이며 true일 경우 �
         AdmizeAdRequest admizeAdRequest =
                 new AdmizeAdRequest.Builder()
                         .admizeAdType(ADMIZE_AD_TYPE.INTERSTITIAL)
-                        .publisherUid("def")
-                        .placementUid("1")
+                        .mediaUid("4e67c0824b9039a2b6047d8a5d60cb1c8470f4a5")
+                        .publisherUid("666fe91f-4a46-4f9a-95b4-a8255603da69")
+                        .placementUid("1e0a5c9c14b38280c6a53d27b3ada5303c793853")
+			.setTest(true)
                         .build();
  
         // 3. AdmizeInterstitalAd 로드 및 결과 통지 받을 리스너(AdmizeInterstitialAdListener) 등록
@@ -349,7 +352,7 @@ setTest()|테스트 모드를 지원합니다. 옵션값이며 true일 경우 �
                 mAdmizeInterstitialAd = admizeInterstitialAd;
                 Toast.makeText(getApplicationContext(), getClass().getSimpleName() + ".onAdLoaded()", Toast.LENGTH_LONG).show();
                 if(mAdmizeInterstitialAd != null){
-                    mAdmizeInterstitialAd.show(SampleClientActivity.this);
+                    mAdmizeInterstitialAd.show(MainActivity.this);
                 }
             }
  
