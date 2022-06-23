@@ -1,4 +1,4 @@
-package io.admize.android.sample;
+package io.admize.android.sample.app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,7 @@ import android.widget.RelativeLayout;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.admize.android.sample.R;
 import io.admize.sdk.android.ads.ADMIZE_AD_SIZE;
 import io.admize.sdk.android.ads.ADMIZE_AD_TYPE;
 import io.admize.sdk.android.ads.AdmizeAdListener;
@@ -50,9 +51,9 @@ public class BannerSampleActivity extends AppCompatActivity {
             AdmizeAdRequest admizeAdRequest =
                     new AdmizeAdRequest.Builder()
                             .admizeAdType(ADMIZE_AD_TYPE.BANNER)
-                            .mediaUid("abc")
-                            .publisherUid("def")
-                            .placementUid("1")
+                            .mediaUid("4e67c0824b9039a2b6047d8a5d60cb1c8470f4a5")
+                            .publisherUid("666fe91f-4a46-4f9a-95b4-a8255603da69")
+                            .placementUid("1e0a5c9c14b38280c6a53d27b3ada5303c793853")
                             .admizeMultiBidsList(admizeAdSizeList)
                             .coppaEnabled(true) // 아동 대상 서비스 취급용 광고 콘텐츠 설정. true이면 아동대상으로만 설정, false이면 미설정. 기본값은 true.
                             .setTest(true)

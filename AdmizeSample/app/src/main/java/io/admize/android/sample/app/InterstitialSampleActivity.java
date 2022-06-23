@@ -1,8 +1,9 @@
-package io.admize.android.sample;
+package io.admize.android.sample.app;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import io.admize.android.sample.R;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -23,7 +24,7 @@ public class InterstitialSampleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_interstitial_sample);
 
         findViewById(R.id.request_interstitial_ad).setOnClickListener(view -> {
             // 0. Admize 로그 수준 지정 : 로그의 상세함 순서는 다음과 같다.
@@ -42,10 +43,9 @@ public class InterstitialSampleActivity extends AppCompatActivity {
             AdmizeAdRequest admizeAdRequest =
                     new AdmizeAdRequest.Builder()
                             .admizeAdType(ADMIZE_AD_TYPE.INTERSTITIAL)
-                            .mediaUid("abc")
-                            .publisherUid("def")
-                            .placementUid("1")
-                            .admizeMultiBidsList(ADMIZE_AD_SIZE.getAdSizeEnum(ADMIZE_AD_SIZE.SMALL_BANNER.getIdx()))
+                            .mediaUid("4e67c0824b9039a2b6047d8a5d60cb1c8470f4a5")
+                            .publisherUid("666fe91f-4a46-4f9a-95b4-a8255603da69")
+                            .placementUid("1e0a5c9c14b38280c6a53d27b3ada5303c793853")
                             .setTest(true)
                             .build();
 

@@ -1,7 +1,8 @@
-package io.admize.android.sample;
+package io.admize.android.sample.app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import io.admize.android.sample.R;
 import android.content.Intent;
 import android.os.Bundle;
 

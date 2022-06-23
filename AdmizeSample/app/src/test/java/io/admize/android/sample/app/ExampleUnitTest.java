@@ -1,4 +1,4 @@
-package io.admize.android.sample;
+package io.admize.android.sample.app;
 
 import org.junit.Test;
 
