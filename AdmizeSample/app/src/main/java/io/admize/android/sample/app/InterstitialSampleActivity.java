@@ -46,6 +46,7 @@ public class InterstitialSampleActivity extends AppCompatActivity {
                             .mediaUid("4e67c0824b9039a2b6047d8a5d60cb1c8470f4a5")
                             .publisherUid("666fe91f-4a46-4f9a-95b4-a8255603da69")
                             .placementUid("1e0a5c9c14b38280c6a53d27b3ada5303c793853")
+                            .coppaEnabled(true)
                             .setTest(true)
                             .build();
 
