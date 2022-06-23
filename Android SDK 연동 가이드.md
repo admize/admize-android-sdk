@@ -203,11 +203,11 @@ gradle.properties ::
         AdmizeAdRequest admizeAdRequest =
                 new AdmizeAdRequest.Builder()
                         .admizeAdType(ADMIZE_AD_TYPE.BANNER)
-						.mediaUid("abc")
+			.mediaUid("abc")
                         .publisherUid("def")
                         .placementUid("1")
                         .admizeMultiBidsList(admizeAdSizeList)
-						.coppaEnabled(true) // 아동 대상 서비스 취급용 광고 콘텐츠 설정. true이면 아동대상으로만 설정, false이면 미설정. 기본값은 true.
+			.coppaEnabled(true) // 아동 대상 서비스 취급용 광고 콘텐츠 설정. true이면 아동대상으로만 설정, false이면 미설정. 기본값은 true.
                         .build();
 						
         // 4. AdmizeAdRequest를 이용, AdmizeAdView 생성.
@@ -231,22 +231,22 @@ gradle.properties ::
  
             @Override
             public void onAdFailedToLoad(int statusCode, String message) {
-				AdmizeLog.d("onAdFailedToLoad() with statusCode: " + statusCode + ", message: "+ message);
+		 AdmizeLog.d("onAdFailedToLoad() with statusCode: " + statusCode + ", message: "+ message);
             }
  
             @Override
             public void onAdOpened() {
-				AdmizeLog.d("onAdOpened()");
+		 AdmizeLog.d("onAdOpened()");
             }
  
             @Override
             public void onAdClicked() {
-				AdmizeLog.d("onAdClicked()");
+		 AdmizeLog.d("onAdClicked()");
             }
  
             @Override
             public void onAdClosed() {
-				AdmizeLog.d("onAdClosed()");
+		 AdmizeLog.d("onAdClosed()");
             }
         });
  
@@ -321,7 +321,11 @@ setTest()|테스트 모드를 지원합니다. 옵션값이며 true일 경우 �
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
- 
+        
+	// 0. Admize 로그 수준 지정 : 로그의 상세함 순서는 다음과 같다.
+        // LogLevel.Verbose > LogLevel.Debug > LogLevel.Info > LogLevel.Warn > LogLevel.Error > LogLevel.None
+        AdmizeLog.setLogLevel(LogLevel.Debug);
+	
         // 1. 초기화(디바이스 정보, Media ID 가져오기)
         AdmizeAds.initialize(this, new AdmizeOnInitializationCompleteListener() {
             @Override
