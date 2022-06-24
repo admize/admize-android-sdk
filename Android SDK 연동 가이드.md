@@ -5,7 +5,7 @@
     * [proguard 설정](#proguard-설정-Admize-SDK-포함된-Class는-난독화-시키지-않도록-주의)
     * [AndroidX 설정](#androidx-사용하는-경우)
 2. [배너 광고 추가하기](#2-배너-광고-추가하기)
-    * [JAVA 방식 base](#자세한-내용은-'AdmizeSample'-참조)
+    * [JAVA 방식 base](#JAVA-방식-base--자세한-내용은-'AdmizeSample'-참조)
     * [XML 방식](#xml-방식--설정하지-않은-항목들은-기본값으로-설정됩니다)
     * [AdmizeAdRequest 설정방법](#AdmizeAdRequest-설정방법)
 3. [전면 광고 추가하기](#3-전면-광고-추가하기)
@@ -45,7 +45,7 @@
  	dependencies {
 	implementation 'com.google.android.gms:play-services-ads-identifier:17.0.0'
 	implementation 'com.google.android.gms:play-services-appset:16.0.0'
-    implementation 'io.admize.sdk:admize-sdk:1.0.0'
+    	implementation 'io.admize.sdk:admize-sdk:1.0.0'
     }
 	```
 
@@ -164,7 +164,7 @@ gradle.properties ::
 
 광고를 삽입하고 싶은 layout에 광고를 소스를 삽입(두 가지 방식 제공 : XML 방식, JAVA 방식)
 
-#### `JAVA 방식 base` [자세한 내용은 ‘AdmizeSample’ 참조]
+#### `JAVA 방식 base` : 자세한 내용은 ‘AdmizeSample’ 참조
 ``` java
    private AdmizeAdView admizeAdView;
 
