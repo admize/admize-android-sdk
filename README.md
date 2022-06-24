@@ -2,7 +2,7 @@
 ====
 - SDK 파일 용량은 1MB이며, 최신 버전의 Admize SDK 사용을 권장합니다.
 - 최신 버전의 Android Studio 사용을 권장합니다.
-- JDK11이상(JDK 1.8부터 지원하는 매체는 dependency 설정 가이드 참고)
+- JDK11이상
 - Admize SDK는 Android 5.0(Lollipop, API Level 21) 이상 기기에서 동작합니다. 
 - 또한 [Google Play의 대상 API 레벨 요구사항](https://developer.android.com/distribute/best-practices/develop/target-sdk?hl=ko)을 충족하기 위해서는 targetSdkVersion 30이상, compileSdkVersion 30이상을 적용하여야 합니다.(2021년 8월부터 적용)
 - Lifecycle에 따라 pause/resume/destroy API를 호출하지 않을 경우, 광고 수신에 불이익을 받을 수 있습니다.
