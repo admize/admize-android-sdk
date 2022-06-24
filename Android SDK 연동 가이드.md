@@ -2,17 +2,17 @@
 1. [Admize 시작하기](#1-Admize-시작하기)
     * [Admize SDK 추가](#admize-sdk-추가)   
     * [AndroidManifest.xml 속성 지정](#androidmanifestxml-속성-지정)
-    * [proguard 설정](#proguard-설정-하는-경우-Admize-sdk-포함된-class는-난독화-시키시면-안됩니다)
+    * [proguard 설정](#proguard-설정-Admize-SDK-포함된-Class는-난독화-시키지-않도록-주의)
     * [AndroidX 설정](#androidx-사용하는-경우)
 2. [배너 광고 추가하기](#2-배너-광고-추가하기)
-    * [JAVA 방식 base](#java-방식-base-자세한-내용은-caulyexample-참조)
+    * [JAVA 방식 base](#자세한-내용은-'AdmizeSample'-참조)
     * [XML 방식](#xml-방식--설정하지-않은-항목들은-기본값으로-설정됩니다)
     * [AdmizeAdRequest 설정방법](#AdmizeAdRequest-설정방법)
 3. [전면 광고 추가하기](#3-전면-광고-추가하기)
     * [전면광고 fullScreen Type](#전면광고-fullscreen-type)   
+4. [지면 자동생성](#4-지면-자동생성)
 5. [아동 대상 서비스 취급용 '태그' 설정](#5-아동-대상-서비스-취급용-태그-설정)
-6. [Error Code](#6-error-code)
-7. [Class Reference](#7-class-reference)
+6. [Class Reference](#6-class-reference)
 
 - - - 
 # 1. Admize 시작하기
@@ -80,13 +80,6 @@
 </activity>
 ```
 
-```xml
-<activity
-    android:name="com.fsn.cauly.blackdragoncore.LandingActivity"
-    android:configChanges="keyboard|keyboardHidden|orientation|screenSize"> 
-</activity>
-```
-
 #### Media Uid 설정
 - APP 등록 후 부여 받은 media uid를 아래의 설정으로 추가한다.
 - 만약, 설정하지 않으면 광고가 표시가 되지 않습니다. AndroidManifest.xml에서 아래와 같이 설정을 하거나, AdmizeAdRequest의 mediaUid() 둘 중 한 곳에 media uid가 반드시 선언되어야 합니다.
@@ -97,7 +90,7 @@
 ```
 
 
-### proguard 설정 하는 경우 Admize SDK 포함된 Class는 난독화 시키시면 안됩니다.
+### proguard 설정 Admize SDK 포함된 Class는 난독화 시키지 않도록 주의
 
 ```clojure
 proguard-rules.pro ::
@@ -171,7 +164,7 @@ gradle.properties ::
 
 광고를 삽입하고 싶은 layout에 광고를 소스를 삽입(두 가지 방식 제공 : XML 방식, JAVA 방식)
 
-#### `JAVA 방식` base [자세한 내용은 ‘AdmizeSample’ 참조]
+#### `JAVA 방식 base` [자세한 내용은 ‘AdmizeSample’ 참조]
 ``` java
    private AdmizeAdView admizeAdView;
 
@@ -193,6 +186,7 @@ gradle.properties ::
         });
 	
         // 2. Bid size(SingleBid 또는 MultiBids)
+	// 하나의 지면에서 다양한 사이즈를 사용할 때 멀티비즈 요청을 하고자할 때는 다음과 같이 입력합니다.
         List<ADMIZE_AD_SIZE> admizeAdSizeList = new ArrayList<>();
         admizeAdSizeList.add(ADMIZE_AD_SIZE.SMALL_BANNER); // 320x50
 	//admizeAdSizeList.add(ADMIZE_AD_SIZE.MEDIUM_RECTANGLE_BANNER); // 320x100
@@ -279,7 +273,8 @@ gradle.properties ::
 
 #### `XML 방식` : 설정하지 않은 항목들은 기본값으로 설정됩니다.
 - banner size는 320x50, 320x100, 300x250만 지원합니다. 
-
+- 
+- 
 ```xml
     <io.admize.sdk.android.ads.AdmizeAdView
         xmlns:ads="http://schemas.android.com/apk/res-auto"
@@ -288,7 +283,7 @@ gradle.properties ::
         android:layout_height="wrap_content"
         ads:textColor="@color/black"
         ads:admizeAdType="BANNER"
-        ads:bannerSize="BANNER320x50"
+        ads:bannerSize="BANNER320x50" // 하나의 지면에서 다양한 사이즈를 사용할 때 멀티비즈 요청을 하고자할 때는 다음과 같이 입력합니다. 예시) 320x50과 320x100 2가지 사이즈로 멀티비즈를 요청하는 경우에 대한 사이즈 설정은 ads:bannerSize="BANNER320x50|BANNER320x100"
         ads:placementUid="1e0a5c9c14b38280c6a53d27b3ada5303c793853"
         ads:publisherUid="666fe91f-4a46-4f9a-95b4-a8255603da69"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -369,6 +364,15 @@ setTest()|테스트 모드를 지원합니다. 옵션값이며 true일 경우 �
 
 Lifecycle에 따라 pause/resume/destroy API를 호출하지 않을 경우, 광고 수신에 불이익을 받을 수 있습니다.
 
+# 4. 지면 자동생성
+
+새로운 지면의 추가를 원하시는 경우 아래의 두 가지 방법 중 선택합니다.
+1) Admize 담당자에게 새로운 지면에 적용할 placement uid 추가 발급 요청
+2) 추가할 지면에 placement uid를 직접 생성 후 요청 시 지면 자동 생성
+- 새로운 지면에서 요청 발생 시 자동으로 지면이 신규 생성됩니다.
+- placement uid 생성 기준은 8자리 이내의 숫자로 생성합니다. (예시 : 1, 12345, 10000001)
+- 다른 지면과 placement uid가 중복되지 않도록 주의
+
 # 5. 아동 대상 서비스 취급용 '태그' 설정
 
 아동대상 콘텐츠로 지정한 경우 관심 기반 광고 및 리마케팅 광고 등이 필터링 됩니다.
@@ -393,22 +397,7 @@ AdmizeAdRequest admizeAdRequest =
 ```
  \* coppaEnabled를 호출하지 않으면 아동 대상 콘텐츠 인 것으로 간주합니다.
 
-
-# 6. Error Code
-
-[error 코드 정의]
-		
-Code|Message|설명
----|---|---
-0|OK|유료 광고
-200|	No filled AD	|전면CPM 광고 없음
-400|	The app code is invalid. Please check your app code!	|App code 불일치 또는default app code
-500|	Server error	|cauly서버 에러
--100|	SDK error	|SDK 에러
--200|	Request Failed(You are not allowed to send requests under minimum interval)	|최소요청주기 미달
-
-
-# 7. Class Reference
+# 6. Class Reference
 
 AdmizeLog 로그 생성 클래스
 ------------------------------
