@@ -5,7 +5,7 @@
     * [proguard 설정](#proguard-설정-Admize-SDK-포함된-Class는-난독화-시키지-않도록-주의)
     * [AndroidX 설정](#androidx-사용하는-경우)
 2. [배너 광고 추가하기](#2-배너-광고-추가하기)
-    * [JAVA 방식 base](#JAVA-방식-base--자세한-내용은-'AdmizeSample'-참조)
+    * [JAVA 방식 base](#java-방식-base--자세한-내용은-admizesample-참조)
     * [XML 방식](#xml-방식--설정하지-않은-항목들은-기본값으로-설정됩니다)
     * [AdmizeAdRequest 설정방법](#AdmizeAdRequest-설정방법)
 3. [전면 광고 추가하기](#3-전면-광고-추가하기)
