@@ -30,7 +30,7 @@ Release Note
      <uses-permission android:name="com.google.android.gms.permission.AD_ID"/>
      ```
 2. Admize SDK 최신 버전으로 업데이트
-   - 3.5.21 이상 버전으로 업데이트를 해주셔야 안드로이드 12 환경에서 정상적인 광고ID 수집이 가능하며,
+   - 1.0.0 이상 버전으로 업데이트를 해주셔야 안드로이드 12 환경에서 정상적인 광고ID 수집이 가능하며,
    - Google 광고ID 가 없는 경우에는 [App set ID](https://developer.android.com/training/articles/app-set-id) 값을 수집하여 분석 및 Fraud 방어를 문제 없이 수행 할 수 있도록 지원합니다.
    - 퍼미션 추가와 함께, Admize 안드로이드 SDK 또한 최신 버전으로 업데이트가 필요합니다.
 3. 개인정보 처리방침 (Pivacy Policy) 업데이트 
