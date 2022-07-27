@@ -59,7 +59,7 @@ Admize SDK 에서 전송하는 모든 사용자 데이터는 전송 중에 암�
 
 매체 운영 정책
 ----
-Admize 매체 운영 정책 입니다. https://admize-static.s3.ap-northeast-2.amazonaws.com/ADMIZE_%EB%A7%A4%EC%B2%B4%EC%9A%B4%EC%98%81%EC%A0%95%EC%B1%85.html
+[Admize 매체 운영 정책 입니다.](https://admize-static.s3.ap-northeast-2.amazonaws.com/ADMIZE_%EB%A7%A4%EC%B2%B4%EC%9A%B4%EC%98%81%EC%A0%95%EC%B1%85.html)
 
 문의
 ----
