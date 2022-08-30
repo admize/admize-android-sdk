@@ -102,6 +102,8 @@ proguard-rules.pro ::
 -keep class io.admize.sdk.android.ads.ADMIZE_AD_SIZE {*;}
 -keep class io.admize.sdk.android.ads.ADMIZE_AD_TYPE {*;}
 -keep class io.admize.sdk.android.ads.AdmizeLog$LogLevel{*;}
+-keep class io.admize.sdk.android.ads.AdmizeCustomSize {*;}
+
 
 -keepclasseswithmembers class io.admize.sdk.android.ads.AdmizeAds {
   public static *** initialize(***);
@@ -146,6 +148,7 @@ proguard-rules.pro ::
     public *** setAdmizeInterstitialAdListener(***);
 }
 
+-keep interface io.admize.sdk.android.ads.IAdmizeListener {*;}                                                        
 -keep interface io.admize.sdk.android.ads.AdmizeInterstitialAdListener {*;}
 -keep interface io.admize.sdk.android.ads.AdmizeAdListener {*;}
 -keep interface io.admize.sdk.android.ads.init.AdmizeOnInitializationCompleteListener {*;}
@@ -202,7 +205,6 @@ gradle.properties ::
 		        .placementUid("1e0a5c9c14b38280c6a53d27b3ada5303c793853")
                         .admizeMultiBidsList(admizeAdSizeList)
 			.coppaEnabled(true) // 아동 대상 서비스 취급용 광고 콘텐츠 설정. true이면 아동대상으로만 설정, false이면 미설정. 기본값은 true.
-			.setTest(true)
                         .build();
 						
         // 4. AdmizeAdRequest를 이용, AdmizeAdView 생성.
@@ -337,7 +339,6 @@ setTest()|테스트 모드를 지원합니다. 옵션값이며 true일 경우 �
                         .mediaUid("4e67c0824b9039a2b6047d8a5d60cb1c8470f4a5")
                         .publisherUid("666fe91f-4a46-4f9a-95b4-a8255603da69")
                         .placementUid("1e0a5c9c14b38280c6a53d27b3ada5303c793853")
-			.setTest(true)
                         .build();
  
         // 3. AdmizeInterstitalAd 로드 및 결과 통지 받을 리스너(AdmizeInterstitialAdListener) 등록
@@ -356,6 +357,20 @@ setTest()|테스트 모드를 지원합니다. 옵션값이며 true일 경우 �
                 AdmizeLog.d("onAdFailedToLoad() with statusCode: " + statusCode + ", message: "+ message);
                 Toast.makeText(getApplicationContext(), getClass().getSimpleName() + ".onAdFailedToLoad() with statusCode: " + statusCode + ", message: "+ message, Toast.LENGTH_LONG).show();
             }
+            @Override
+            public void onAdOpened() {
+		 AdmizeLog.d("onAdOpened()");
+            }
+ 
+            @Override
+            public void onAdClicked() {
+		 AdmizeLog.d("onAdClicked()");
+            }
+ 
+            @Override
+            public void onAdClosed() {
+		 AdmizeLog.d("onAdClosed()");
+            }                                                                                              
         });
     }
 ```
@@ -372,6 +387,7 @@ Lifecycle에 따라 pause/resume/destroy API를 호출하지 않을 경우, 광�
 - 새로운 지면에서 요청 발생 시 자동으로 지면이 신규 생성됩니다.
 - placement uid 생성 기준은 8자리 이내의 숫자로 생성합니다. (예시 : 1, 12345, 10000001)
 - 다른 지면과 placement uid가 중복되지 않도록 주의
+- 지면이 자동으로 생성 되기 까지 최대 5분이 소요 될 수 있으며, 생성 되는 시간 동안에는 응답 에러가 발생 할 수 있습니다.
 
 # 5. 아동 대상 서비스 취급용 '태그' 설정
 
@@ -446,6 +462,9 @@ AdmizeInterstitialAdListener||
 ---|---
 onAdLoaded(AdmizeInterstitialAd, String message)	|광고 노출 성공 시 호출됨.
 onAdFailedToLoad(int statusCode, String message)	|광고 노출 실패 시 호출됨. 오류 코드와 내용이 statusCode, message 변수에 설정됨
+onAdOpened()    |webView를 통해 랜딩 페이지가 열린 경우 호출됨
+onAdClicked()   |광고가 클릭되었을 때 호출됨.
+onAdClosed()|광고를 닫았을 때 호출됨.
 
 > admize SDK 설치 관련하여 문의 사항은 고객센터 **1544-8867**
 > 또는 ops_admize@fsn.co.kr 로 문의주시기 바랍니다.
