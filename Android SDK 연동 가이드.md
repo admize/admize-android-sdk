@@ -102,6 +102,8 @@ proguard-rules.pro ::
 -keep class io.admize.sdk.android.ads.ADMIZE_AD_SIZE {*;}
 -keep class io.admize.sdk.android.ads.ADMIZE_AD_TYPE {*;}
 -keep class io.admize.sdk.android.ads.AdmizeLog$LogLevel{*;}
+-keep class io.admize.sdk.android.ads.AdmizeCustomSize {*;}
+
 
 -keepclasseswithmembers class io.admize.sdk.android.ads.AdmizeAds {
   public static *** initialize(***);
