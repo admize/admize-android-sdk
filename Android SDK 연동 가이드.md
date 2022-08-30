@@ -146,6 +146,7 @@ proguard-rules.pro ::
     public *** setAdmizeInterstitialAdListener(***);
 }
 
+-keep interface io.admize.sdk.android.ads.IAdmizeListener {*;}                                                        
 -keep interface io.admize.sdk.android.ads.AdmizeInterstitialAdListener {*;}
 -keep interface io.admize.sdk.android.ads.AdmizeAdListener {*;}
 -keep interface io.admize.sdk.android.ads.init.AdmizeOnInitializationCompleteListener {*;}
@@ -356,6 +357,20 @@ setTest()|테스트 모드를 지원합니다. 옵션값이며 true일 경우 �
                 AdmizeLog.d("onAdFailedToLoad() with statusCode: " + statusCode + ", message: "+ message);
                 Toast.makeText(getApplicationContext(), getClass().getSimpleName() + ".onAdFailedToLoad() with statusCode: " + statusCode + ", message: "+ message, Toast.LENGTH_LONG).show();
             }
+            @Override
+            public void onAdOpened() {
+		 AdmizeLog.d("onAdOpened()");
+            }
+ 
+            @Override
+            public void onAdClicked() {
+		 AdmizeLog.d("onAdClicked()");
+            }
+ 
+            @Override
+            public void onAdClosed() {
+		 AdmizeLog.d("onAdClosed()");
+            }                                                                                              
         });
     }
 ```
@@ -446,6 +461,9 @@ AdmizeInterstitialAdListener||
 ---|---
 onAdLoaded(AdmizeInterstitialAd, String message)	|광고 노출 성공 시 호출됨.
 onAdFailedToLoad(int statusCode, String message)	|광고 노출 실패 시 호출됨. 오류 코드와 내용이 statusCode, message 변수에 설정됨
+onAdOpened()    |webView를 통해 랜딩 페이지가 열린 경우 호출됨
+onAdClicked()   |광고가 클릭되었을 때 호출됨.
+onAdClosed()|광고를 닫았을 때 호출됨.
 
 > admize SDK 설치 관련하여 문의 사항은 고객센터 **1544-8867**
 > 또는 ops_admize@fsn.co.kr 로 문의주시기 바랍니다.
