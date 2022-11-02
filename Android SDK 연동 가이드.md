@@ -198,14 +198,14 @@ gradle.properties ::
          
         // 3. AdmizeAdRequest 생성
         AdmizeAdRequest admizeAdRequest =
-                new AdmizeAdRequest.Builder()
-                        .admizeAdType(ADMIZE_AD_TYPE.BANNER)
-		        .mediaUid("4e67c0824b9039a2b6047d8a5d60cb1c8470f4a5")
-		        .publisherUid("666fe91f-4a46-4f9a-95b4-a8255603da69")
-		        .placementUid("1e0a5c9c14b38280c6a53d27b3ada5303c793853")
-                        .admizeMultiBidsList(admizeAdSizeList)
-			.coppaEnabled(true) // 아동 대상 서비스 취급용 광고 콘텐츠 설정. true이면 아동대상으로만 설정, false이면 미설정. 기본값은 true.
-                        .build();
+                new AdmizeAdRequest.Builder(
+		        "4e67c0824b9039a2b6047d8a5d60cb1c8470f4a5", // publisherUid
+		        "666fe91f-4a46-4f9a-95b4-a8255603da69", // mediaUid
+		        "1e0a5c9c14b38280c6a53d27b3ada5303c793853", // placementUid
+                ADMIZE_AD_TYPE.BANNER,
+                admizeAdSizeList)
+                .coppaEnabled(true) // 아동 대상 서비스 취급용 광고 콘텐츠 설정. true이면 아동대상으로만 설정, false이면 미설정. 기본값은 true.
+                .build();
 						
         // 4. AdmizeAdRequest를 이용, AdmizeAdView 생성.
         admizeAdView = new AdmizeAdView(this);
@@ -301,11 +301,12 @@ gradle.properties ::
 
 Adinfo|설 명
 ---|---
-admizeAdType()|광고 종류를 설정합니다. 필수 값이며 "BANNER", "INTERSTITIAL"을 설정할 수 있습니다.
-publisherUid()|APP 등록 후 APP 소유자에게 발급되는 고유 ID입니다. 필수 값이며 발급 관련한 자세한 내용은 <ops_admize@fsn.co.kr>로 문의바랍니다.
-placementUid()|지면 ID로 게재할 광고의 위치에 부여되는 고유 ID입니다. 필수 값이며 발급 관련한 자세한 내용은 <ops_admize@fsn.co.kr>로 문의바랍니다.
-mediaUid()|APP 등록 후 부여 받은 media uid 입력합니다. 필수 값이며 만약, 설정하지 않으면 광고가 표시가 되지 않습니다. AndroidManifest.xml에서 아래와 같이 설정을 하거나, AdmizeAdRequest의 mediaUid() 둘 중 한 곳에 media uid가 반드시 선언되어야 합니다.
-admizeMultiBidsList()|지원하는 배너 사이즈입니다. admizeAdType을 "BANNER"로 지정한 경우 필수 값이며 "BANNER320x50", "BANNER320x100", "BANNER300x250"을 지원합니다.
+publisherUid|APP 등록 후 APP 소유자에게 발급되는 고유 ID입니다. 필수 값이며 발급 관련한 자세한 내용은 <ops_admize@fsn.co.kr>로 문의바랍니다.
+mediaUid|APP 등록 후 부여 받은 media uid 입력합니다. 필수 값이며 만약, 설정하지 않으면 광고가 표시가 되지 않습니다. AndroidManifest.xml에서 아래와 같이 설정을 하거나, 
+AdmizeAdRequest의 mediaUid() 둘 중 한 곳에 media uid가 반드시 선언되어야 합니다.
+placementUid|지면 ID로 게재할 광고의 위치에 부여되는 고유 ID입니다. 필수 값이며 발급 관련한 자세한 내용은 <ops_admize@fsn.co.kr>로 문의바랍니다.
+admizeAdType|광고 종류를 설정합니다. 필수 값이며 "BANNER", "INTERSTITIAL"을 설정할 수 있습니다.
+admizeMultiBidsList|지원하는 배너 사이즈입니다. admizeAdType을 "BANNER"로 지정한 경우 필수 값이며 "BANNER320x50", "BANNER320x100", "BANNER300x250"을 지원합니다.
 setTest()|테스트 모드를 지원합니다. 옵션값이며 true일 경우 테스트 광고가 보여지고, false일 경우 실제 광고가 보여집니다.테스트 광고와 관련한 자세한 내용은 <ops_admize@fsn.co.kr>로 문의바랍니다.
 
 # 3. 전면 광고 추가하기
@@ -334,12 +335,14 @@ setTest()|테스트 모드를 지원합니다. 옵션값이며 true일 경우 �
          
         // 2. AdmizeAdRequest 생성
         AdmizeAdRequest admizeAdRequest =
-                new AdmizeAdRequest.Builder()
-                        .admizeAdType(ADMIZE_AD_TYPE.INTERSTITIAL)
-                        .mediaUid("4e67c0824b9039a2b6047d8a5d60cb1c8470f4a5")
-                        .publisherUid("666fe91f-4a46-4f9a-95b4-a8255603da69")
-                        .placementUid("1e0a5c9c14b38280c6a53d27b3ada5303c793853")
-                        .build();
+                new AdmizeAdRequest.Builder(
+		        "4e67c0824b9039a2b6047d8a5d60cb1c8470f4a5", // publisherUid
+		        "666fe91f-4a46-4f9a-95b4-a8255603da69", // mediaUid
+		        "1e0a5c9c14b38280c6a53d27b3ada5303c793853", // placementUid
+                ADMIZE_AD_TYPE.INTERSTITIAL,
+                admizeAdSizeList)
+                .coppaEnabled(true) // 아동 대상 서비스 취급용 광고 콘텐츠 설정. true이면 아동대상으로만 설정, false이면 미설정. 기본값은 true.
+                .build();
  
         // 3. AdmizeInterstitalAd 로드 및 결과 통지 받을 리스너(AdmizeInterstitialAdListener) 등록
         AdmizeInterstitialAd.loadAd(this, admizeAdRequest, new AdmizeInterstitialAdListener(){
