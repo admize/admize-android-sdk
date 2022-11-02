@@ -41,11 +41,12 @@ public class InterstitialSampleActivity extends AppCompatActivity {
 
             // 2. AdmizeAdRequest 생성
             AdmizeAdRequest admizeAdRequest =
-                    new AdmizeAdRequest.Builder()
-                            .admizeAdType(ADMIZE_AD_TYPE.INTERSTITIAL)
-                            .mediaUid("4e67c0824b9039a2b6047d8a5d60cb1c8470f4a5")
-                            .publisherUid("666fe91f-4a46-4f9a-95b4-a8255603da69")
-                            .placementUid("1e0a5c9c14b38280c6a53d27b3ada5303c793853")
+                    new AdmizeAdRequest.Builder(
+                            "666fe91f-4a46-4f9a-95b4-a8255603da69", // publisherUid
+                            "4e67c0824b9039a2b6047d8a5d60cb1c8470f4a5", // mediaUid
+                            "1e0a5c9c14b38280c6a53d27b3ada5303c793853", // placementUid
+                            ADMIZE_AD_TYPE.INTERSTITIAL,
+                            null)
                             .coppaEnabled(true)
                             .setTest(true)
                             .build();
@@ -62,6 +63,21 @@ public class InterstitialSampleActivity extends AppCompatActivity {
                 public void onAdFailedToLoad(int statusCode, String message) {
                     AdmizeLog.d(".onAdFailedToLoad() with statusCode: " + statusCode + ", message: "+ message);
                     Toast.makeText(getApplicationContext(), getClass().getSimpleName() + ".onAdFailedToLoad() with statusCode: " + statusCode + ", message: "+ message, Toast.LENGTH_LONG).show();
+                }
+
+                @Override
+                public void onAdOpened() {
+
+                }
+
+                @Override
+                public void onAdClicked() {
+
+                }
+
+                @Override
+                public void onAdClosed() {
+
                 }
             });
         });

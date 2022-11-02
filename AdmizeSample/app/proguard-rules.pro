@@ -35,11 +35,6 @@
 
 -keepclasseswithmembers class io.admize.sdk.android.ads.AdmizeAdRequest$Builder {
     public <init>(...);
-    public *** admizeAdType(***);
-    public *** publisherUid(***);
-    public *** placementUid(***);
-    public *** mediaUid(***);
-    public *** admizeMultiBidsList(***);
     public *** setTest(***);
     public *** coppaEnabled(***);
     public *** build();

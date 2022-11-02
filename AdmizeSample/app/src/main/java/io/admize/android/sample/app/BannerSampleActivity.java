@@ -49,12 +49,12 @@ public class BannerSampleActivity extends AppCompatActivity {
 
             // 3. AdmizeAdRequest 생성
             AdmizeAdRequest admizeAdRequest =
-                    new AdmizeAdRequest.Builder()
-                            .admizeAdType(ADMIZE_AD_TYPE.BANNER)
-                            .mediaUid("4e67c0824b9039a2b6047d8a5d60cb1c8470f4a5")
-                            .publisherUid("666fe91f-4a46-4f9a-95b4-a8255603da69")
-                            .placementUid("1e0a5c9c14b38280c6a53d27b3ada5303c793853")
-                            .admizeMultiBidsList(admizeAdSizeList)
+                    new AdmizeAdRequest.Builder(
+                            "666fe91f-4a46-4f9a-95b4-a8255603da69", // publisherUid
+                            "4e67c0824b9039a2b6047d8a5d60cb1c8470f4a5", // mediaUid
+                            "1e0a5c9c14b38280c6a53d27b3ada5303c793853", // placementUid
+                            ADMIZE_AD_TYPE.BANNER,
+                            admizeAdSizeList)
                             .coppaEnabled(true) // 아동 대상 서비스 취급용 광고 콘텐츠 설정. true이면 아동대상으로만 설정, false이면 미설정. 기본값은 true.
                             .setTest(true)
                             .build();
