@@ -82,7 +82,7 @@
 
 #### Media Uid 설정
 - APP 등록 후 부여 받은 media uid를 아래의 설정으로 추가한다.
-- 만약, 설정하지 않으면 광고가 표시가 되지 않습니다. AndroidManifest.xml에서 ```xml<application>``` 태그 내에 아래와 같이 설정을 하거나, AdmizeAdRequest의 mediaUid() 둘 중 한 곳에 media uid가 반드시 선언되어야 합니다.
+- 만약, 설정하지 않으면 광고가 표시가 되지 않습니다. AndroidManifest.xml에서 ```<application>``` 태그 내에 아래와 같이 설정을 하거나, AdmizeAdRequest의 mediaUid() 둘 중 한 곳에 media uid가 반드시 선언되어야 합니다.
 ```xml
 <meta-data
 	android:name="io.admize.sdk.android.ads.MEDIA_UID"
